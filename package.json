@@ -1,0 +1,15 @@
+{
+  "name": "shit-tone-says",
+  "version": "0.0.0",
+  "description": "Shit tony says needs to be stored for future generations. This is our mission.",
+  "main": "index.js",
+  "repository": "git@github.com:tjefferson08/shit-tony-says.git",
+  "author": "Travis Jefferson <tjefferson@sharethrough.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  }
+}
