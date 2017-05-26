@@ -15,9 +15,17 @@ services:
     depends_on:
       - db
     command: yarn start
+    environment:
+      - DATABASE_URL=postgres://shit_tony_says:mysecretpassword@db:5432/shit_tony_says
+      - PATH=$PATH:/usr/scr/node_modules
+
   db:
-    image: postgres:latest
+    image: postgres:9.6
     ports:
       - 5432:5432
     volumes:
       - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: shit_tony_says
+
