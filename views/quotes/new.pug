@@ -1,0 +1,7 @@
+extends ../layout
+
+block body
+  form(method='POST' action='/quotes')
+    label(for='quote') Quote
+    input#quote(type='text' name='quote')
+    input(type='submit' value='Submit')

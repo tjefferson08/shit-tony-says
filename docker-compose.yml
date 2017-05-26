@@ -17,7 +17,7 @@ services:
     command: yarn start
     environment:
       - DATABASE_URL=postgres://shit_tony_says:mysecretpassword@db:5432/shit_tony_says
-      - PATH=$PATH:/usr/scr/node_modules
+      - PATH=$PATH:/usr/src/node_modules
 
   db:
     image: postgres:9.6
