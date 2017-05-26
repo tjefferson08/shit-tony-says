@@ -1,0 +1,18 @@
+version: '2'
+
+volumes:
+  pg-data:
+    driver: local
+
+services:
+  web:
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 80:8080
+  db:
+    ports:
+      - 5432:5432
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+

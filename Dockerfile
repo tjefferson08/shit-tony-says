@@ -1,11 +1,11 @@
 FROM node:boron
 EXPOSE 8080
 
-WORKDIR /usr/src
+WORKDIR /usr/src/app
 COPY package.json .
 COPY yarn.lock .
 
 RUN yarn install
 
-COPY . /usr/src
+COPY . /usr/src/app
 
