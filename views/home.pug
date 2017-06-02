@@ -1,0 +1,10 @@
+extends ./layout
+
+block body
+  div.container
+    h1.shit= quote.body
+    span.credit -Tony
+
+  div.buttons
+    a.button(href='/quotes') All
+    a.button(href='/quotes/new') Add

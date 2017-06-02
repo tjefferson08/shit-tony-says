@@ -15,11 +15,13 @@ app.use(expressValidator());
 app.set('view engine', 'pug');
 
 app.get('/', function(req, res) {
-  res.redirect(301, '/quotes');
+  knex.select().table('quotes').orderByRaw('RANDOM()').first().then(quote => {
+    res.render('home', { quote });
+  });
 });
 
 app.get('/quotes', function(req, res) {
-  knex.select().table('quotes').then((quotes) => {
+  knex.select().table('quotes').then(quotes => {
     res.render('quotes/index', { quotes });
   });
 });
@@ -29,9 +31,12 @@ app.get('/quotes/new', function(req, res) {
 });
 
 app.post('/quotes', function(req, res) {
-  knex('quotes').insert({ body: req.body.quote }).then(() => {
-    res.render('quotes/new');
-  }).catch(console.error.bind(console));
+  knex('quotes')
+    .insert({ body: req.body.quote })
+    .then(() => {
+      res.render('quotes/new');
+    })
+    .catch(console.error.bind(console));
 });
 
 app.listen(PORT, function() {
