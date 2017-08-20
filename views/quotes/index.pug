@@ -3,5 +3,6 @@ extends ../layout
 block body
   ul
     each quote in quotes
-      li= quote.body
+      a(href=`/quotes/${quote.id}`)
+        li= quote.body
   a(href='/quotes/new') New Quote

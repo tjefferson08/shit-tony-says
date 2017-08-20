@@ -1,0 +1,12 @@
+extends ../layout
+
+block body
+  form(method='POST' action=`/quotes/${quote.id}?_method=DELETE`)
+    label(for='quote') Quote:
+    blockquote
+      p= quote.body
+
+    label Created at
+    p= quote.created_at
+    input(type='submit' value='Delete')
+  a(href='/quotes') See all quotes
