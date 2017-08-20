@@ -30,9 +30,39 @@ app.get('/quotes/new', function(req, res) {
   res.render('quotes/new');
 });
 
+app.get('/quotes/:id', function(req, res) {
+  knex
+    .select()
+    .table('quotes')
+    .where('id', req.params.id)
+    .first()
+    .then(quote => {
+      if (!quote) {
+        return res.redirect('/quotes');
+      }
+
+      return res.render('quotes/show', { quote });
+    });
+});
+
+app.delete('/quotes/:id', function(req, res) {
+  knex
+    .select()
+    .table('quotes')
+    .where('id', req.params.id)
+    .first()
+    .del()
+    .then(() => {
+      console.log('hit DEL endpt');
+      return res.redirect('/quotes');
+    });
+});
+
 app.post('/quotes', function(req, res) {
+  const now = new Date().toISOString();
+
   knex('quotes')
-    .insert({ body: req.body.quote })
+    .insert({ body: req.body.quote, created_at: now, updated_at: now })
     .then(() => {
       res.render('quotes/new');
     })
